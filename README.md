@@ -1,5 +1,9 @@
 # [Paper Dashboard 2](https://demos.creative-tim.com/paper-dashboard/examples/dashboard.html) [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
+
+##  MODIFIED PAGE IS THE "TEMPLATE.HTML" PAGE
+
+
 ![alt text](https://s3.amazonaws.com/creativetim_bucket/products/86/original/opt_pd2_thumbnail.jpg)
 
 If you are a developer or a website owner that needs to work within a dashboard and want to have a pretty sight while doing so, **[Paper Dashboard 2](https://creative-tim.com/live/paper-dashboard-2)** is for you. Paper Dashboard is a Bootstrap Admin Panel which combines soft colours with beautiful typography and spacious cards and graphics. It is a powerful tool, but it is light and easy to use. It has enough features to allow you to get the job done, but it is not crowded to the point where you can't find the files for a specific plugin.
