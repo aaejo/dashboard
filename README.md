@@ -3,6 +3,8 @@
 
 ##  MODIFIED PAGE IS THE "TEMPLATE.HTML" PAGE
 
+Documentation : https://demos.creative-tim.com/paper-dashboard/docs/1.0/getting-started/introduction.html
+
 
 ![alt text](https://s3.amazonaws.com/creativetim_bucket/products/86/original/opt_pd2_thumbnail.jpg)
 
@@ -80,33 +82,4 @@ Paper Dashboard 2
 - Run in terminal `gulp compile-scss` for a single compilation or gulp watch for continous compilation of the changes that you make in `*.scss` files. This command should be run in the same folder where `gulpfile.js` and `package.json` are located
 - Run in terminal `gulp open-app` for opening the Presentation Page (default) of the product. You can set in `gulpfile.js` from your downloaded archive any page you want to open in browser, `at line 30: gulp.src('./examples/dashboard.html')`
 
-## Upgrade to PRO Version
 
-Are you looking for more components? Please check our Premium Version of Paper Dashboard right [here](https://www.creative-tim.com/product/paper-dashboard-2-pro).
-
-## Useful Links
-
-More products from Creative Tim: <http://www.creative-tim.com/bootstrap-themes>
-
-Tutorials: <https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w>
-
-Freebies: <http://www.creative-tim.com/products>
-
-Affiliate Program (earn money): <http://www.creative-tim.com/affiliates/new>
-
-Social Media:
-
-Twitter: <https://twitter.com/CreativeTim>
-
-Facebook: <https://www.facebook.com/CreativeTim>
-
-Dribbble: <https://dribbble.com/creativetim>
-
-Google+: <https://plus.google.com/+CreativetimPage>
-
-Instagram: <https://instagram.com/creativetimofficial>
-
-[CHANGELOG]: ./CHANGELOG.md
-[LICENSE]: ./LICENSE
-[version-badge]: https://img.shields.io/badge/version-2.0.1-blue.svg
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
