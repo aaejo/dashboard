@@ -67,7 +67,7 @@ Coded by www.creative-tim.com
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category">Execution Time</p>
-                    <p class="card-title">15:36<p>
+                    <p class="card-title">null<p>
                   </div>
                 </div>
               </div>
@@ -91,7 +91,7 @@ Coded by www.creative-tim.com
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category"># Items Reviewed</p>
-                    <p class="card-title">15,546<p>
+                    <p class="card-title">00,000<p>
                   </div>
                 </div>
               </div>
@@ -114,7 +114,7 @@ Coded by www.creative-tim.com
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category"># Manual Intervention</p>
-                    <p class="card-title">140<p>
+                    <p id = "numManual" class="card-title">00<p>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@ Coded by www.creative-tim.com
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category"># of Schools</p>
-                    <p class="card-title">420<p>
+                    <p id ="numSchools" class="card-title">420<p>
                   </div>
                 </div>
               </div>
@@ -156,15 +156,11 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="description"> Search Each Country</h4>
+                <h4 class="description"> Start Scrape By Country</h4>
               </div>
               <div style="text-align:center;"class="card-body ml-auto mr-auto">
-                <p class="card-text"> The buttons allow you to perform the manual intervention one 
-                  country at a time. This allows you to have the option of only looking at a spefic country. 
-                </p>
-
                 <form action="postmethod.php" method="post"> 
-                  <button type="button" id ="btnCan" class="btn btn-primary btn-lg"> Canada </button>
+                  <button type="button" id ="btnCan" onclick="clickCanada()" class="btn btn-primary btn-lg"> Canada </button>
                   <button type="button" id ="btnUS" class="btn btn-info btn-lg"> United States </button>
                   <button type="button" id ="btnUK" class="btn btn-success btn-lg"> United Kingdom </button>
                   <button type="button" id ="btnAus" class="btn btn-danger btn-lg"> Australia </button>
@@ -178,7 +174,7 @@ Coded by www.creative-tim.com
       </div>
 
 
-      <div class="content">
+      <div class="content hide" id = "manualIntervention">
         <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -189,8 +185,8 @@ Coded by www.creative-tim.com
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th> Name </th>
-                      <th> Personal Information </th>
+                      <th>  </th>
+                      <th> Profile Information </th>
                     </thead>
                     <tbody>
                       <tr>
@@ -227,17 +223,18 @@ Coded by www.creative-tim.com
                     <h6 class="card-subtitle mb-2 text-muted"> Add The Missing Infomation </h6>
                     <!-- <input rows="1" id="myText" placeholder="enter missing information" class="form-control textarea"> </input> -->
                     <div >
-                      <input id="textName" placeholder="Enter missing name" class="hide"> </input>  
-                      <input  id="textEmail" placeholder="Enter missing email" class="hide"> </input>  
-                      <input id="textSpec" placeholder="Enter missing specialization(s)" class="hide"> </input> 
+                      <input  size="50" id="textName" placeholder="Enter missing name" class="hide"> </input>  
+                      <input  size="50" id="textEmail" placeholder="Enter missing email" class="hide"> </input>  
+                      <input size="50" id="textSpec" placeholder="Enter missing specialization(s)" class="hide"> </input> 
                     </div>
 
-                    <div class = "ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round btn-lg" onclick="myFunction()">Update Profile</button>
-                      <button type="submit" class="btn btn-danger btn-round btn-lg" onclick="myFunction()">Skip This Profile</button>
-                    </div>
+                    
                   
                 </form>
+                <div style="text-align: center;">
+                  <button type="button" style="margin-right: 10px;" onclick="updateProfile()" class="btn btn-primary btn-round btn-lg">Update Profile</button>
+                  <button type="button" style="margin-left: 10px;" onclick="skipProfile()" class="btn btn-danger btn-round btn-lg">Skip This Profile</button>
+                </div>
               </div>
                <!-- <button type="submit" class="btn btn-primary btn-round" onclick="window.open('helloworld.txt')">Download!</button> -->
 
@@ -248,6 +245,11 @@ Coded by www.creative-tim.com
             </div>
           </div>
         </div>
+        <div style = "text-align: center; width: 200px;" class = "ml-auto mr-auto">
+          <button type="button" id="btnDownload" class="btn btn-lg btn-primary" disabled>Download</button>
+        </div>
+
+        
 
 
 
@@ -286,9 +288,10 @@ Coded by www.creative-tim.com
 
   <script>
     var json = `{
+      
         "profile": {
           "htmlContent": "<html><body><div>...Profile HTML Content...</div></body></html>",
-          "url": "https://www.exampleuniversity.ca/profiles/john-doe",
+          "url": "https://www.queensu.ca/philosophy/people/daryn-lehoux",
           "department": "Department of Computer Science",
           "institution": {
             "name": "Example University",
@@ -298,11 +301,11 @@ Coded by www.creative-tim.com
           }
         },
         "reviewer": {
-            "name": "John Doe",
+            "name": "Daryn Lehoux",
             "salutation": "Dr",
-            "email": "someperson@gmail.com",
+            "email": "lehoux@queensu.ca",
             "institution": {
-              "name": "Example University",
+              "name": "Queen's University",
               "country": "Canada",
               "address": "1234 Example St., Toronto, ON M1A 1A1",
               "website": "https://www.exampleuniversity.ca/"
@@ -314,21 +317,11 @@ Coded by www.creative-tim.com
             "EMAIL",
             "SPECS"
         ]
+      
         
     }`; 
     // Converting JSON object to JS object
     var obj = JSON.parse(json);
-    
-    // Define recursive function to print nested values
-    function printValues(obj) {
-        for(var k in obj) {
-            if(obj[k] instanceof Object) {
-                printValues(obj[k]);
-            } else {
-                document.write(obj[k] + "<br>");
-            };
-        }
-    };
     
     var temp = obj["reviewer"]["name"];
     var output = `{
@@ -355,11 +348,7 @@ Coded by www.creative-tim.com
     parseOP.department = obj["reviewer"]["department"];
 
               
-    
-    // Printing a single value
-    //document.write(obj["book"]["author"] + "<br>");  // J. K. Rowling
-    //document.write(obj["book"]["characters"][0] + "<br>");  // Prints: Harry Potter
-    //document.write(obj["book"]["price"]["hardcover"]);  // Prints: $20.32
+
     document.getElementById("print").innerHTML = "New !";
     document.getElementById("print").innerHTML = obj["missing"];
     if (obj["missing"].includes("EMAIL")){
@@ -411,6 +400,13 @@ Coded by www.creative-tim.com
       console.log ("GeeksforGeeks is a portal for geeks.");
     } 
 
+    function clickCanada() {
+      var text = document.getElementById("manualIntervention");
+      document.getElementById("numSchools").innerHTML = "1";
+      document.getElementById("numManual").innerHTML = "2";
+      text.classList.toggle("show"); 
+    }
+
     function missingName() {
       var text = document.getElementById("textName");
       text.classList.toggle("show");
@@ -424,11 +420,38 @@ Coded by www.creative-tim.com
       text.classList.toggle("show");
     }
 
+    function updateProfile () {
+      obj.reviewer.name = " ";
+      obj.reviewer.email = "paul.fairfield@queensu.ca";
+      obj.profile.url = "https://www.queensu.ca/philosophy/people/paul-fairfield";
+      obj.reviewer.missing = ["NAME", "SPEC"];
+      document.getElementById("reviewEmail").innerHTML = obj["reviewer"]["email"];
+      document.getElementById("reviewName").innerHTML = obj["reviewer"]["name"];
+
+      //document.getElementById("reviewProfile").innerHTML = "https://www.queensu.ca/philosophy/people/paul-fairfield";
+      document.getElementById("ReviewProfile").innerHTML = obj["profile"]["url"];
+
+
+      missingName();
+      missingEmail();
+      //missingSpec();
+      //placeholder
+
+    }
+
+    function skipProfile() {
+      document.getElementById("btnDownload").disabled = false;
+
+    }
+
+
     //parseOP.specializations = obj["reviewer"]["lastName"];
     parseOP.email = obj["reviewer"]["email"];
 
 
     document.getElementById("print").innerHTML = parseOP["email"];
+
+
 
   
     const button = document.getElementById('btnCan');
