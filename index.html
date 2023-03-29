@@ -14,6 +14,14 @@ Coded by www.creative-tim.com
 -->
 <!doctype html>
 <html lang="en">
+  <style>
+    .hide {
+      display: none;
+    }
+    .show {
+      display: block;
+    }
+  </style>
 
 <head>
   <meta charset="utf-8" />
@@ -21,7 +29,7 @@ Coded by www.creative-tim.com
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Paper Dashboard 2 by Creative Tim
+    Jounral Database Slurp  
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -36,9 +44,6 @@ Coded by www.creative-tim.com
 
 <body class="">
   <div class="wrapper" style =" padding: 35px; background-color:powderblue;">
-    
-
-      
       <div class="content">
         <div class="row">
           <div class="col-md-12">
@@ -146,6 +151,31 @@ Coded by www.creative-tim.com
         </div>
       </div>
 
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="description"> Search Each Country</h4>
+              </div>
+              <div style="text-align:center;"class="card-body ml-auto mr-auto">
+                <p class="card-text"> The buttons allow you to perform the manual intervention one 
+                  country at a time. This allows you to have the option of only looking at a spefic country. 
+                </p>
+
+                <form action="postmethod.php" method="post"> 
+                  <button type="button" id ="btnCan" class="btn btn-primary btn-lg"> Canada </button>
+                  <button type="button" id ="btnUS" class="btn btn-info btn-lg"> United States </button>
+                  <button type="button" id ="btnUK" class="btn btn-success btn-lg"> United Kingdom </button>
+                  <button type="button" id ="btnAus" class="btn btn-danger btn-lg"> Australia </button>
+                  <button type="button" id ="btnNZ" class="btn btn-warning btn-lg"> New Zealand </button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
       <div class="content">
@@ -164,87 +194,68 @@ Coded by www.creative-tim.com
                     </thead>
                     <tbody>
                       <tr>
-                        <td class=" text-primary"> First Name : </td>
-                        <td> Nancy </td>
+                        <td class=" text-primary"> Name : </td>
+                        <td id="reviewName"> </td>
                       </tr>
-
-                      <tr>
-                        <td class=" text-primary"> Last Name : </td>
-                        <td> Salay </td>
-                      </tr>
-
                       <tr>
                         <td class=" text-primary"> Email : </td>
-                        <td id="demo"> </td>
+                        <td id="reviewEmail"> </td>
                       </tr>
-
                       <tr>
                         <td class= "text-primary"> Insitution : </td>
-                        <td> Queen's University </td>
+                        <td id="ReviewInsit">  </td>
                       </tr>
-
-                      <tr>
-                        <td class= "text-primary"> City : </td>
-                        <td> Toronto</td>
-                      </tr>
-
                       <tr>
                         <td class= "text-primary"> Country : </td>
-                        <td> Canada </td>
+                        <td id="ReviewCountry"> </td>
+                      </tr>
+                      <tr>
+                        <td class= "text-primary"> Specialization(s) : </td>
+                        <td id="ReviewSpec"> </td>
+                      </tr>
+                      <tr>
+                        <td class= "text-primary"> Profile : </td>
+                        <td id="ReviewProfile"> </td>
                       </tr>
 
-                      
-                      <tr>
-                        <td class= "text-primary"> Person Attribute : </td>
-                      </tr>
  
                     </tbody>
                   </table>
                 </div>
+                <br> <br>
+                <form>
+                    <h6 class="card-subtitle mb-2 text-muted"> Add The Missing Infomation </h6>
+                    <!-- <input rows="1" id="myText" placeholder="enter missing information" class="form-control textarea"> </input> -->
+                    <div >
+                      <input id="textName" placeholder="Enter missing name" class="hide"> </input>  
+                      <input  id="textEmail" placeholder="Enter missing email" class="hide"> </input>  
+                      <input id="textSpec" placeholder="Enter missing specialization(s)" class="hide"> </input> 
+                    </div>
+
+                    <div class = "ml-auto mr-auto">
+                      <button type="submit" class="btn btn-primary btn-round btn-lg" onclick="myFunction()">Update Profile</button>
+                      <button type="submit" class="btn btn-danger btn-round btn-lg" onclick="myFunction()">Skip This Profile</button>
+                    </div>
+                  
+                </form>
               </div>
                <!-- <button type="submit" class="btn btn-primary btn-round" onclick="window.open('helloworld.txt')">Download!</button> -->
 
 
 
-              <div style = "margin-left: 35px; margin-right: 35px;" class="form-group">
-                <label> Missing Infomation </label>
-                <input rows="1" id="myText" placeholder="enter missing information" class="form-control textarea"> </input>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="update ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary btn-round" onclick="myFunction()">Update Profile</button>
-              </div>
-            </div>
-            
+              
+            </div>            
             </div>
           </div>
         </div>
 
-        <div class="content">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="description"> Manual Intervention for Missing Information</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
        <footer class="footer footer-black footer-white">
         <div class="container-fluid">
           <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
-                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
-                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
-              </ul>
-            </nav>
+            <p id="print"> hello </p>
+
             <div class="credits ml-auto">
               <span class="copyright">
                 © 2020, made with <i class="fa fa-heart heart"></i> by Creative Tim
@@ -268,14 +279,174 @@ Coded by www.creative-tim.com
   <script src="./assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="./assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="renderjson.js"></script> -->
+
 
 
 
   <script>
+    var json = `{
+        "profile": {
+          "htmlContent": "<html><body><div>...Profile HTML Content...</div></body></html>",
+          "url": "https://www.exampleuniversity.ca/profiles/john-doe",
+          "department": "Department of Computer Science",
+          "institution": {
+            "name": "Example University",
+            "country": "Canada",
+            "address": "1234 Example St., Toronto, ON M1A 1A1",
+            "website": "https://www.exampleuniversity.ca/"
+          }
+        },
+        "reviewer": {
+            "name": "John Doe",
+            "salutation": "Dr",
+            "email": "someperson@gmail.com",
+            "institution": {
+              "name": "Example University",
+              "country": "Canada",
+              "address": "1234 Example St., Toronto, ON M1A 1A1",
+              "website": "https://www.exampleuniversity.ca/"
+            },
+            "department": "Queen's philosophy department",
+            "specializations": ["philosophy of mind", "behavioral philosophy"]
+        },
+        "missing": [
+            "EMAIL",
+            "SPECS"
+        ]
+        
+    }`; 
+    // Converting JSON object to JS object
+    var obj = JSON.parse(json);
+    
+    // Define recursive function to print nested values
+    function printValues(obj) {
+        for(var k in obj) {
+            if(obj[k] instanceof Object) {
+                printValues(obj[k]);
+            } else {
+                document.write(obj[k] + "<br>");
+            };
+        }
+    };
+    
+    var temp = obj["reviewer"]["name"];
+    var output = `{
+      "name": " ",
+      "salutation": "Dr",
+      "email": " ",
+      "institution": {
+        "name": " ",
+        "country": " ",
+        "address": " ",
+        "website": " "
+      },
+      "department": " ",
+      "specializations": [ ]
+    }`;
+    var parseOP = JSON.parse(output);
+
+
+
+    parseOP.institution.name = obj["reviewer"]["institution"]["name"];
+    parseOP.institution.country = obj["reviewer"]["institution"]["country"];
+    parseOP.institution.address = obj["reviewer"]["institution"]["address"];
+    parseOP.institution.website = obj["reviewer"]["institution"]["website"];
+    parseOP.department = obj["reviewer"]["department"];
+
+              
+    
+    // Printing a single value
+    //document.write(obj["book"]["author"] + "<br>");  // J. K. Rowling
+    //document.write(obj["book"]["characters"][0] + "<br>");  // Prints: Harry Potter
+    //document.write(obj["book"]["price"]["hardcover"]);  // Prints: $20.32
+    document.getElementById("print").innerHTML = "New !";
+    document.getElementById("print").innerHTML = obj["missing"];
+    if (obj["missing"].includes("EMAIL")){
+      document.getElementById("print").innerHTML = "New !";
+    }
+    document.getElementById("print").innerHTML = parseOP["department"];
+
+
+
+    if (!obj["missing"].includes("NAME")){
+      document.getElementById("reviewName").innerHTML = obj["reviewer"]["name"];
+      //document.getElementById("reviewLast").innerHTML = obj["reviewer"]["lastName"];
+      parseOP.name =obj["reviewer"]["name"]; 
+      //parseOP.lastName =obj["reviewer"]["lastName"];
+    }
+    else {
+      missingName();
+    }
+
+    if (!obj["missing"].includes("EMAIL")){
+      document.getElementById("reviewEmail").innerHTML = obj["reviewer"]["email"];
+    }
+    else {
+      missingEmail();
+    }
+
+    document.getElementById("ReviewInsit").innerHTML = obj["reviewer"]["institution"]["name"];
+    document.getElementById("ReviewCountry").innerHTML = obj["reviewer"]["institution"]["country"];
+
+    if (!obj["missing"].includes("SPECS")){
+      document.getElementById("ReviewSpec").innerHTML = obj["reviewer"]["specializations"] + ", &nbsp;";
+    }
+    else {
+      missingSpec();
+    }
+    document.getElementById("ReviewProfile").innerHTML = obj["profile"]["url"];
+    
+    
     function myFunction() {
       var x = document.getElementById("myText").value;
       document.getElementById("demo").innerHTML = x;
     }
+    
+     function clickMe() {
+      var y = document.getElementById("textEmail").value;
+      parseOP.email = y;
+
+      //localStorage.setItem("testJSON", JSON.stringify(parseOP));
+      console.log ("GeeksforGeeks is a portal for geeks.");
+    } 
+
+    function missingName() {
+      var text = document.getElementById("textName");
+      text.classList.toggle("show");
+    }
+    function missingEmail() {
+      var text = document.getElementById("textEmail");
+      text.classList.toggle("show");
+    }
+    function missingSpec() {
+      var text = document.getElementById("textSpec");
+      text.classList.toggle("show");
+    }
+
+    //parseOP.specializations = obj["reviewer"]["lastName"];
+    parseOP.email = obj["reviewer"]["email"];
+
+
+    document.getElementById("print").innerHTML = parseOP["email"];
+
+  
+    const button = document.getElementById('btnCan');
+
+    button.addEventListener('click', async _ => {
+      try {     
+        const response = await fetch('POST /ca/start', {
+          method: 'post',
+          body: {
+            // Your body
+          }
+        });
+        console.log('Completed!', response);
+      } catch(err) {
+        console.error(`Error: ${err}`);
+      }
+    });
+
     </script>
 
 </body>
