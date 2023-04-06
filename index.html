@@ -47,7 +47,7 @@ Coded by www.creative-tim.com
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <h3>Jounral Database Slurp</h3>
+            <h3>Journal Database Slurp</h3>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ Coded by www.creative-tim.com
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category">Execution Time</p>
-                    <p class="card-title">15:36<p>
+                    <p id = "timer" class="card-title"> m  s<p>
                   </div>
                 </div>
               </div>
@@ -90,8 +90,8 @@ Coded by www.creative-tim.com
                 </div>
                 <div class="col-7 col-md-8">
                   <div class="numbers">
-                    <p class="card-category"># Items Reviewed</p>
-                    <p class="card-title">15,546<p>
+                    <p class="card-category"># of Items Skipped</p>
+                    <p id = "numSkip" class="card-title">0<p>
                   </div>
                 </div>
               </div>
@@ -113,8 +113,8 @@ Coded by www.creative-tim.com
                 </div>
                 <div class="col-7 col-md-8">
                   <div class="numbers">
-                    <p class="card-category"># Manual Intervention</p>
-                    <p class="card-title">140<p>
+                    <p class="card-category"># of Items Updated</p>
+                    <p id = "numUpdate" class="card-title">0<p>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@ Coded by www.creative-tim.com
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category"># of Schools</p>
-                    <p class="card-title">420<p>
+                    <p id ="numSchools" class="card-title">420<p>
                   </div>
                 </div>
               </div>
@@ -156,20 +156,14 @@ Coded by www.creative-tim.com
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="description"> Search Each Country</h4>
+                <h4 class="card-title"> Start Scrape By Country</h4>
               </div>
               <div style="text-align:center;"class="card-body ml-auto mr-auto">
-                <p class="card-text"> The buttons allow you to perform the manual intervention one 
-                  country at a time. This allows you to have the option of only looking at a spefic country. 
-                </p>
-
-                <form action="postmethod.php" method="post"> 
-                  <button type="button" id ="btnCan" class="btn btn-primary btn-lg"> Canada </button>
-                  <button type="button" id ="btnUS" class="btn btn-info btn-lg"> United States </button>
-                  <button type="button" id ="btnUK" class="btn btn-success btn-lg"> United Kingdom </button>
-                  <button type="button" id ="btnAus" class="btn btn-danger btn-lg"> Australia </button>
-                  <button type="button" id ="btnNZ" class="btn btn-warning btn-lg"> New Zealand </button>
-                </form>
+                  <button type="button" id ="btnCan" onclick="clickCanada()"  class="btn btn-primary btn-lg"> Canada </button>
+                  <button type="button" id ="btnUS" onclick="clickUS()" class="btn btn-info btn-lg"> United States </button>
+                  <button type="button" id ="btnUK" onclick="clickUK()" class="btn btn-success btn-lg"> United Kingdom </button>
+                  <button type="button" id ="btnAus" onclick="clickAUS()" class="btn btn-danger btn-lg"> Australia </button>
+                  <button type="button" id ="btnNZ" onclick="clickNZ()" class="btn btn-warning btn-lg"> New Zealand </button>
 
               </div>
             </div>
@@ -178,31 +172,31 @@ Coded by www.creative-tim.com
       </div>
 
 
-      <div class="content">
+      <div class="content hide" id = "manualIntervention">
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="description"> Manual Intervention for Missing Information</h4>
+                <h4 class="card-title"> Manual Intervention for Missing Information</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th> Name </th>
-                      <th> Personal Information </th>
+                      <th>  </th>
+                      <th> Profile Information </th>
                     </thead>
                     <tbody>
                       <tr>
                         <td class=" text-primary"> Name : </td>
-                        <td id="reviewName"> </td>
+                        <td id="ReviewName"> </td>
                       </tr>
                       <tr>
                         <td class=" text-primary"> Email : </td>
-                        <td id="reviewEmail"> </td>
+                        <td id="ReviewEmail"> </td>
                       </tr>
                       <tr>
-                        <td class= "text-primary"> Insitution : </td>
+                        <td class= "text-primary"> Institution : </td>
                         <td id="ReviewInsit">  </td>
                       </tr>
                       <tr>
@@ -221,23 +215,45 @@ Coded by www.creative-tim.com
  
                     </tbody>
                   </table>
+                  <br>
+<!--                   <h1 id = "total-count">  </h1>
+                  <h1 id = "enter">  </h1> -->
+
+                  <!-- <table class="table">
+                    <tr>
+                        <th> name</th>
+                        <th> age </th>
+                        <th> city</th>
+                    </tr>
+                    <tr>
+                        <td id="testingname"> </td>
+                        <td id="testingage"> </td>
+                        <td id="testingcity"> </td>
+                    </tr>
+                    
+                </table> -->
                 </div>
                 <br> <br>
                 <form>
                     <h6 class="card-subtitle mb-2 text-muted"> Add The Missing Infomation </h6>
                     <!-- <input rows="1" id="myText" placeholder="enter missing information" class="form-control textarea"> </input> -->
                     <div >
-                      <input id="textName" placeholder="Enter missing name" class="hide"> </input>  
-                      <input  id="textEmail" placeholder="Enter missing email" class="hide"> </input>  
-                      <input id="textSpec" placeholder="Enter missing specialization(s)" class="hide"> </input> 
+                      <input  size="50" id="textName" placeholder="Enter missing name" > </input>  <br>
+                      <input  size="50" id="textEmail" placeholder="Enter missing email"> </input>  <br>
+                      <input size="50" id="textSpec" placeholder="Enter missing specialization(s)"> </input>  <br>
+                      <!-- <input size="50" id="textSpec" placeholder="Enter missing specialization(s)" class="hide"> </input>  <br> -->
+
                     </div>
 
-                    <div class = "ml-auto mr-auto">
-                      <button type="submit" class="btn btn-primary btn-round btn-lg" onclick="myFunction()">Update Profile</button>
-                      <button type="submit" class="btn btn-danger btn-round btn-lg" onclick="myFunction()">Skip This Profile</button>
-                    </div>
+                    
                   
                 </form>
+                <div style="text-align: center;">
+                  <button type="button" style="margin-right: 10px;" onclick="updateButton()" class="btn btn-primary btn-round btn-lg">Update Profile</button>
+                  <button  type="button" style="margin-left: 10px;" onclick="skipButton()" class="btn btn-danger btn-round btn-lg">Skip This Profile</button>
+                  <!-- <button  type="button" style="margin-left: 10px;" onclick="something()" class="btn btn-danger btn-round btn-lg">Testing Something</button> -->
+
+                </div>
               </div>
                <!-- <button type="submit" class="btn btn-primary btn-round" onclick="window.open('helloworld.txt')">Download!</button> -->
 
@@ -248,22 +264,9 @@ Coded by www.creative-tim.com
             </div>
           </div>
         </div>
-
-
-
-       <footer class="footer footer-black footer-white">
-        <div class="container-fluid">
-          <div class="row">
-            <p id="print"> hello </p>
-
-            <div class="credits ml-auto">
-              <span class="copyright">
-                © 2020, made with <i class="fa fa-heart heart"></i> by Creative Tim
-              </span>
-            </div>
-          </div>
+        <div style = "text-align: center; width: 200px;" class = "ml-auto mr-auto">
+          <button type="button" id="btnDownload" onclick = "download()" class="btn btn-lg btn-primary">Download</button>
         </div>
-      </footer> 
     </div>
   </div>
   <!--   Core JS Files   -->
@@ -271,8 +274,7 @@ Coded by www.creative-tim.com
   <script src="./assets/js/core/popper.min.js"></script>
   <script src="./assets/js/core/bootstrap.min.js"></script>
   <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@5.0.0/bundles/stomp.umd.min.js"></script> <!-- stomper-->
   <!-- Chart JS -->
   <script src="./assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -282,54 +284,207 @@ Coded by www.creative-tim.com
   <!-- <script type="text/javascript" src="renderjson.js"></script> -->
 
 
-
-
   <script>
-    var json = `{
-        "profile": {
-          "htmlContent": "<html><body><div>...Profile HTML Content...</div></body></html>",
-          "url": "https://www.exampleuniversity.ca/profiles/john-doe",
-          "department": "Department of Computer Science",
-          "institution": {
-            "name": "Example University",
-            "country": "Canada",
-            "address": "1234 Example St., Toronto, ON M1A 1A1",
-            "website": "https://www.exampleuniversity.ca/"
-          }
+    const client = new StompJs.Client({
+        brokerURL: 'ws://localhost:8080/manual-intervention-websocket', //XHANGEAD TOOOO 80000 LATER
+        debug: function (str) {
+            console.log(str);
         },
-        "reviewer": {
-            "name": "John Doe",
-            "salutation": "Dr",
-            "email": "someperson@gmail.com",
-            "institution": {
-              "name": "Example University",
-              "country": "Canada",
-              "address": "1234 Example St., Toronto, ON M1A 1A1",
-              "website": "https://www.exampleuniversity.ca/"
-            },
-            "department": "Queen's philosophy department",
-            "specializations": ["philosophy of mind", "behavioral philosophy"]
-        },
-        "missing": [
-            "EMAIL",
-            "SPECS"
-        ]
-        
-    }`; 
-    // Converting JSON object to JS object
-    var obj = JSON.parse(json);
-    
-    // Define recursive function to print nested values
-    function printValues(obj) {
-        for(var k in obj) {
-            if(obj[k] instanceof Object) {
-                printValues(obj[k]);
-            } else {
-                document.write(obj[k] + "<br>");
-            };
-        }
+        reconnectDelay: 5000,
+        heartbeatIncoming: 4000,
+        heartbeatOutgoing: 4000,
+    });
+
+    callback = function (message) {
+      // called when the client receives a STOMP message from the server
+      if (message.body) {
+        alert('got message with body ' + message.body);
+      } else {
+        alert('got empty message');
+      }
+    }; 
+
+    client.onConnect = function (frame) {
+    // Do something, all subscribes must be done is this callback
+    // This is needed because this will be executed after a (re)connect
+        const subscription = client.subscribe('/data/incompleteScrape', callback);
+        //console.log("hello world");
     };
+
+    client.activate();
+
+
+
+     const myJson = `[
+        {
+          "reviewer": {
+              "name": null,
+              "salutation": "Dr.",
+              "email": "aaa@queensu.ca",
+              "institution": {
+                  "name": "Queen's University",
+                  "country": "Canada",
+                  "address": "99 University Ave, Kingston, ON, K7L 3N6",
+                  "website": "https://www.queensu.ca/philosophy/people/faculty-and-fellows"
+              },
+              "department": null,
+              "specializations": null
+          },
+          "profile": {
+              "url": "https://www.queensu.ca/philosophy/people/daryn-lehoux"
+          },
+          "specializations": [],
+          "missing": ["NAME","SPECS"]
+
+        },
+        {
+
+          "reviewer": {
+              "name": "B",
+              "salutation": "Dr.",
+              "email": " ",
+              "institution": {
+                  "name": "Queen's University",
+                  "country": "Canada",
+                  "address": "99 University Ave, Kingston, ON, K7L 3N6",
+                  "website": "https://www.queensu.ca/philosophy/people/faculty-and-fellows"
+              },
+              "department": null,
+              "specializations": ["philosophy of mind", "behavioral philosophy"]
+          },
+          "profile": {
+              "url": "https://www.queensu.ca/philosophy/people/daryn-lehoux"
+          },
+          "missing": ["EMAIL"]
+
+        },
+        {
+          "reviewer": {
+              "name": "   ",
+              "salutation": "Dr.",
+              "email": " ",
+              "institution": {
+                  "name": "Queen's University",
+                  "country": "Canada",
+                  "address": "99 University Ave, Kingston, ON, K7L 3N6",
+                  "website": "https://www.queensu.ca/philosophy/people/faculty-and-fellows"
+              },
+              "department": null,
+              "specializations": null
+          },
+          "profile": {
+              "url": "https://www.queensu.ca/philosophy/people/daryn-lehoux"
+          },
+          "missing": ["EMAIL","SPECS", "NAME"]
+        }
+    ]`;
     
+
+    //var obj = JSON.parse(myJson);
+
+    const increaseCount = document.getElementById("increment-count");
+
+    //const totalCount = document.getElementById("total-count");
+    
+    let count = 0;
+    var txt = JSON.parse(myJson);
+    var skipcount = 0;
+    var updateCount = 0;
+  
+
+    document.getElementById("ReviewName").innerHTML =  txt[0].reviewer.name; 
+      document.getElementById("ReviewEmail").innerHTML =  txt[0].reviewer.email; 
+      document.getElementById("ReviewInsit").innerHTML =  txt[0].reviewer.institution.name; 
+      document.getElementById("ReviewCountry").innerHTML =  txt[0].reviewer.institution.country; 
+      document.getElementById("ReviewSpec").innerHTML =  txt[0].reviewer.specializations; 
+      document.getElementById("ReviewProfile").innerHTML =  txt[0].profile.url; 
+
+    function next () {
+      count++;
+
+        document.getElementById("ReviewName").innerHTML =  txt[count].reviewer.name; 
+        document.getElementById("ReviewEmail").innerHTML =  txt[count].reviewer.email; 
+        document.getElementById("ReviewInsit").innerHTML =  txt[count].reviewer.institution.name; 
+        document.getElementById("ReviewCountry").innerHTML =  txt[count].reviewer.institution.country; 
+        document.getElementById("ReviewSpec").innerHTML =  txt[count].reviewer.specializations; 
+        document.getElementById("ReviewProfile").innerHTML =  txt[count].profile.url; 
+
+        // document.getElementById("numSkip").innerHTML = skipcount;
+
+    }
+
+    function skipButton () {
+      skipcount++;
+      next();
+    }
+
+    function updateButton () { 
+      var currCountry = txt[count].reviewer.institution.country;
+      var currInst = txt[count].reviewer.institution.name;
+      var currAdd = txt[count].reviewer.institution.address;
+      var currWeb = txt[count].profile.url;
+      var currDept = txt[count].reviewer.department;
+
+      updateProfile(currCountry,currInst, currAdd, currWeb, currDept);
+      next();
+
+    }
+
+    function updateProfile (currCountry, currInst, currAdd, currWeb, currDept) {
+      //document.getElementById("numUpdate") = updateCount;
+      const quote = `{
+        "name": " asdf",
+        "salutation": "Dr",
+        "email": " ",
+        "institution": {
+          "name": " ",
+          "country": " asdfasdfasdf",
+          "address": " asdfadf",
+          "website": " "
+        },
+        "department": "temp",
+        "specializations": [ ]
+      }`;
+
+      var quo = JSON.parse(quote);
+
+
+        // Add the items that are the same from the input to the output
+  /*      quo.institution.name = obj["reviewer"]["institution"]["name"];
+       quo.institution.country = obj["reviewer"]["institution"]["country"];
+       quo.institution.address = obj["reviewer"]["institution"]["address"];
+       quo.institution.website = obj["reviewer"]["institution"]["website"];
+       quo.department = obj["reviewer"]["department"];  */
+
+      var typedName = document.getElementById("textName");
+      var typedInsit = document.getElementById("textEmail");
+      var typedEmail = document.getElementById("textSpec");
+
+    
+      quo.name = typedName.value;
+      quo.email = typedName.value;
+      quo.specializations = typedEmail.value;
+      quo.institution.country = currCountry;
+      quo.institution.address = currCountry;
+      quo.institution.website = currCountry;
+      quo.department = currCountry;
+
+
+
+      client.publish({ destination: '/app/complete', body: JSON.stringify(quo) });   
+      
+      // Reset the Textbox
+      document.getElementById("textName").value=null;
+      document.getElementById("textEmail").value=null;
+      document.getElementById("textSpec").value=null;
+    }
+
+  
+    increaseCount.addEventListener("click", handleIncrement);
+    //document.getElementById("print").innerHTML = txt[1]["name"];
+
+
+     // Create a empty JSON that will be the output    
     var temp = obj["reviewer"]["name"];
     var output = `{
       "name": " ",
@@ -341,111 +496,180 @@ Coded by www.creative-tim.com
         "address": " ",
         "website": " "
       },
-      "department": " ",
+      "department": "temp",
       "specializations": [ ]
     }`;
     var parseOP = JSON.parse(output);
 
+    function something () {
+      console.log('quote:', quote);
+      console.log('stringified quote:', JSON.stringify(quote));
+      client.publish({ destination: '/app/complete', body: JSON.stringify(quote) });    
+    }
 
+    
 
-    parseOP.institution.name = obj["reviewer"]["institution"]["name"];
+     // Add the items that are the same from the input to the output
+/*     parseOP.institution.name = obj["reviewer"]["institution"]["name"];
     parseOP.institution.country = obj["reviewer"]["institution"]["country"];
     parseOP.institution.address = obj["reviewer"]["institution"]["address"];
     parseOP.institution.website = obj["reviewer"]["institution"]["website"];
-    parseOP.department = obj["reviewer"]["department"];
+    parseOP.department = obj["reviewer"]["department"];  */
+
+
 
               
+
+    // document.getElementById("print").innerHTML = "New !";
+    // document.getElementById("print").innerHTML = obj["missing"];
+    // if (obj["missing"].includes("EMAIL")){
+    //   document.getElementById("print").innerHTML = "New !";
+    // }
+    // document.getElementById("print").innerHTML = parseOP["department"];
+
+
+    document.getElementById("ReviewName").innerHTML = obj["reviewer"]["name"]; // Add 
+    document.getElementById("ReviewEmail").innerHTML = obj["reviewer"]["email"]; // Add 
+    document.getElementById("ReviewInsit").innerHTML = obj["reviewer"]["institution"]["name"]; // Display the insitution name
+    document.getElementById("ReviewCountry").innerHTML = obj["reviewer"]["institution"]["country"]; // Display the insitution country
+    document.getElementById("ReviewSpec").innerHTML = obj["reviewer"]["specializations"] + ", &nbsp;";
+    document.getElementById("ReviewProfile").innerHTML = obj["profile"]["url"]; // Display the profile url 
     
-    // Printing a single value
-    //document.write(obj["book"]["author"] + "<br>");  // J. K. Rowling
-    //document.write(obj["book"]["characters"][0] + "<br>");  // Prints: Harry Potter
-    //document.write(obj["book"]["price"]["hardcover"]);  // Prints: $20.32
-    document.getElementById("print").innerHTML = "New !";
-    document.getElementById("print").innerHTML = obj["missing"];
-    if (obj["missing"].includes("EMAIL")){
-      document.getElementById("print").innerHTML = "New !";
-    }
-    document.getElementById("print").innerHTML = parseOP["department"];
+    var timerFlag = true;
 
-
-
-    if (!obj["missing"].includes("NAME")){
-      document.getElementById("reviewName").innerHTML = obj["reviewer"]["name"];
-      //document.getElementById("reviewLast").innerHTML = obj["reviewer"]["lastName"];
-      parseOP.name =obj["reviewer"]["name"]; 
-      //parseOP.lastName =obj["reviewer"]["lastName"];
-    }
-    else {
-      missingName();
-    }
-
-    if (!obj["missing"].includes("EMAIL")){
-      document.getElementById("reviewEmail").innerHTML = obj["reviewer"]["email"];
-    }
-    else {
-      missingEmail();
-    }
-
-    document.getElementById("ReviewInsit").innerHTML = obj["reviewer"]["institution"]["name"];
-    document.getElementById("ReviewCountry").innerHTML = obj["reviewer"]["institution"]["country"];
-
-    if (!obj["missing"].includes("SPECS")){
-      document.getElementById("ReviewSpec").innerHTML = obj["reviewer"]["specializations"] + ", &nbsp;";
-    }
-    else {
-      missingSpec();
-    }
-    document.getElementById("ReviewProfile").innerHTML = obj["profile"]["url"];
-    
-    
-    function myFunction() {
-      var x = document.getElementById("myText").value;
-      document.getElementById("demo").innerHTML = x;
-    }
-    
-     function clickMe() {
-      var y = document.getElementById("textEmail").value;
-      parseOP.email = y;
-
-      //localStorage.setItem("testJSON", JSON.stringify(parseOP));
-      console.log ("GeeksforGeeks is a portal for geeks.");
-    } 
-
-    function missingName() {
-      var text = document.getElementById("textName");
-      text.classList.toggle("show");
-    }
-    function missingEmail() {
-      var text = document.getElementById("textEmail");
-      text.classList.toggle("show");
-    }
-    function missingSpec() {
-      var text = document.getElementById("textSpec");
-      text.classList.toggle("show");
-    }
-
-    //parseOP.specializations = obj["reviewer"]["lastName"];
-    parseOP.email = obj["reviewer"]["email"];
-
-
-    document.getElementById("print").innerHTML = parseOP["email"];
-
-  
-    const button = document.getElementById('btnCan');
-
-    button.addEventListener('click', async _ => {
+    async function clickCanada() {
+      //startClock ();
+      var text = document.getElementById("manualIntervention");
+      text.classList.add("show"); 
       try {     
-        const response = await fetch('POST /ca/start', {
-          method: 'post',
-          body: {
-            // Your body
-          }
-        });
-        console.log('Completed!', response);
-      } catch(err) {
-        console.error(`Error: ${err}`);
+            const response = await fetch('/ca/start', {
+            method: 'post',
+            body: {
+                // Your body
+                // dont need body
+            }
+            });
+            console.log('Completed!', response);
+        } catch(err) {
+            console.error(`Error: ${err}`);
+        }
+
+    }
+
+    async function clickAUS() {
+      var text = document.getElementById("manualIntervention");
+      text.classList.add("show"); 
+      try {     
+            const response = await fetch('/au/start', {
+            method: 'post',
+            body: {
+                // Your body
+                // dont need body
+            }
+            });
+            console.log('Completed!', response);
+        } catch(err) {
+            console.error(`Error: ${err}`);
+        }
+    }
+
+    async function clickNZ() {
+      var text = document.getElementById("manualIntervention");
+      text.classList.add("show"); 
+        try {     
+            const response = await fetch('/nz/start', {
+            method: 'post',
+            body: {
+                // Your body
+                // dont need body
+            }
+            });
+            console.log('Completed!', response);
+        } catch(err) {
+            console.error(`Error: ${err}`);
+        }
+    }
+    async function clickUS() {
+      var text = document.getElementById("manualIntervention");
+      text.classList.add("show"); 
+        try {     
+            const response = await fetch('/us/start', {
+            method: 'post',
+            body: {
+                // Your body
+                // dont need body
+            }
+            });
+            console.log('Completed!', response);
+        } catch(err) {
+            console.error(`Error: ${err}`);
+        }
+    }
+    async function clickUK() {
+      var text = document.getElementById("manualIntervention");
+      text.classList.add("show"); 
+        try {     
+            const response = await fetch('/uk/start', {
+            method: 'post',
+            body: {
+                // Your body
+                // dont need body
+            }
+            });
+            console.log('Completed!', response);
+        } catch(err) {
+            console.error(`Error: ${err}`);
+        }
+    }
+
+
+
+    
+    //parseOP.specializations = obj["reviewer"]["lastName"];
+
+
+    // document.getElementById("print").innerHTML = parseOP["email"];
+
+
+
+    function startClock () {    
+      // Start Clock
+      var start = new Date().getTime();
+      // Update the count down every 1 second
+      var x = setInterval(function() {
+
+      // Get today's date and time
+      var now = new Date().getTime();
+        
+      // Find the distance between now and the count down date
+      var distance =  now - start;
+        
+      // Time calculations for days, hours, minutes and seconds
+
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+      // Output the result in an element with id="demo"
+      document.getElementById("timer").innerHTML = minutes + "m" + seconds + "s";
+        
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timer").innerHTML = "EXPIRED";
       }
-    });
+      }, 1000);
+    }
+
+    async function download () {
+      try {     
+            const response = await fetch('/export', {
+            method: 'get'
+            });
+            console.log('Completed!', response);
+        } catch(err) {
+            console.error(`Error: ${err}`);
+        }
+    }
 
     </script>
 
