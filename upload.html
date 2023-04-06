@@ -72,8 +72,8 @@ Coded by www.creative-tim.com
                   database. The system will be able to automatically parse the contents of the pages for the most part. 
                   The system is semi automated, where it automaically parses content from pages and requires manual intervention 
                   for some profiles. </p>
-                <form>
-                  <label for ="pass"> Upload the file </label>
+                <form action="/import" method="post">
+                  <label for = "file"> Upload the file </label>
                   <br>
                   <input type="file" name = "file" id="file" required/>
                   <br><br>
@@ -85,8 +85,10 @@ Coded by www.creative-tim.com
                   <!-- <a href = "https://www.google.ca/">
                     <button class="btn btn-primary">Countinue</button>
                   </a> -->
-                  <a href="http://localhost:8000/index.html" class="button btn btn-primary">Countinue</a>
-
+                  <!-- <a type="submit" href="http://localhost:8000/index.html" class="button btn btn-primary">Countinue</a> -->
+                  <a href="http://localhost:8000/index.html" >  
+                    <button type="submit" class="button btn btn-primary" > Countinue </button>
+                  </a>  
 
 
                 </form>
