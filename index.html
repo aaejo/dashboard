@@ -29,7 +29,7 @@ Coded by www.creative-tim.com
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Jounral Database Slurp  
+    Journal Database Slurp  
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -265,7 +265,7 @@ Coded by www.creative-tim.com
           </div>
         </div>
         <div style = "text-align: center; width: 200px;" class = "ml-auto mr-auto">
-          <button type="button" id="btnDownload" onclick = "download()" class="btn btn-lg btn-primary">Download</button>
+          <a id="btnDownload" class="btn btn-lg btn-primary" role="button" href="/export/" download="results.xlsx">Download</a>
         </div>
     </div>
   </div>
@@ -286,7 +286,7 @@ Coded by www.creative-tim.com
 
   <script>
     const client = new StompJs.Client({
-        brokerURL: 'ws://localhost:8080/manual-intervention-websocket', //XHANGEAD TOOOO 80000 LATER
+        brokerURL: 'ws://localhost:8000/manual-intervention-websocket',
         debug: function (str) {
             console.log(str);
         },
@@ -659,18 +659,6 @@ Coded by www.creative-tim.com
       }
       }, 1000);
     }
-
-    async function download () {
-      try {     
-            const response = await fetch('/export', {
-            method: 'get'
-            });
-            console.log('Completed!', response);
-        } catch(err) {
-            console.error(`Error: ${err}`);
-        }
-    }
-
     </script>
 
 </body>

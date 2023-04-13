@@ -5,4 +5,5 @@ COPY assets/ /usr/share/nginx/html/assets/
 COPY index.html /usr/share/nginx/html/
 COPY upload.html /usr/share/nginx/html/
 
+EXPOSE 8000
 LABEL org.opencontainers.image.source=https://github.com/aaejo/dashboard

@@ -29,7 +29,7 @@ Coded by www.creative-tim.com
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Jounral Database Slurp  
+    Journal Database Slurp
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -47,17 +47,12 @@ Coded by www.creative-tim.com
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <h3 class = "title">Jounral Database Slurp</h3>
+            <h3 class = "title">Journal Database Slurp</h3>
           </div>
         </div>
       </div>
 
-      <div class="content">
-
-    
-
-       
-
+    <div class="content">
       <div class="content">
         <div class="row">
           <div class="col-md-12">
@@ -72,41 +67,54 @@ Coded by www.creative-tim.com
                   database. The system will be able to automatically parse the contents of the pages for the most part. 
                   The system is semi automated, where it automaically parses content from pages and requires manual intervention 
                   for some profiles. </p>
-                <form action="/import" method="post">
-                  <label for = "file"> Upload the file </label>
+                <form action="/import/" method="post" enctype="multipart/form-data" id="import-form">
+                  <label for="file"> Upload the file </label>
                   <br>
-                  <input type="file" name = "file" id="file" required/>
+                  <input type="file" name="file" id="file" required />
                   <br><br>
                   <div class="form-group">
-                    <label for ="pass"> Enter the password associated with the file </label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                    <label for="pass"> Enter the password associated with the file </label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+                      required>
                   </div>
                   <br>
-                  <!-- <a href = "https://www.google.ca/">
-                    <button class="btn btn-primary">Countinue</button>
-                  </a> -->
-                  <!-- <a type="submit" href="http://localhost:8000/index.html" class="button btn btn-primary">Countinue</a> -->
-                  <a href="http://localhost:8000/index.html" >  
-                    <button type="submit" class="button btn btn-primary" > Countinue </button>
-                  </a>  
-
-
+                  <button type="submit" class="button btn btn-primary"> Countinue </button>
                 </form>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
 
+      <script>
+        window.addEventListener("load", () => {
+          async function upload() {
+            const data = new FormData(form);
 
-      
+            try {
+              const response = await fetch('/import/', { body: data, method: 'POST' })
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                  }
+                  return response.text();
+                });
+              console.log("Upload success");
+              window.location.href = '/index.html';
+            } catch (error) {
+              console.error("Upload failure:", error);
+            }
+          }
 
-  <script>
-    
+          // Get the form element
+          const form = document.getElementById("import-form");
 
-    </script>
-
+          form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            upload();
+          });
+        });
+      </script>
 </body>
 
 </html>
